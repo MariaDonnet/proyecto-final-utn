@@ -1,36 +1,59 @@
-import { Link } from "react-router-dom"
-import { useAuth } from "../context/UserContext"
+import { Link } from "react-router-dom";
+import { useAuth } from "../context/UserContext";
+import "../styles/components/Header.css";
 
 const Header = () => {
-  const { user, logout } = useAuth()
+  const { user, logout } = useAuth();
 
   const handleLogout = () => {
-    logout()
-  }
+    logout();
+  };
 
   return (
-    <header style={{ backgroundColor: "lightblue" }}>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/85/Logo-Test.png" alt="imagen de logo" />
-      <nav>
-        <ul>
-          {/* Cambiar elementos a por componentes Link de react-router-dom */}
-          {
-            user && <>
-              <li><Link to="/">Inicio</Link></li>
-              <li><Link to="/dashboard">Dashboard</Link></li>
-              <button onClick={handleLogout}>Cerrar sesión</button>
+    <header className="header">
+      <div className="header__logo">
+        <Link to="/" className="header__brand">
+          Mi Tienda
+        </Link>
+      </div>
+      <nav className="header__nav">
+        <ul className="nav__list">
+          {user && (
+            <>
+              <li className="nav__item">
+                <Link to="/" className="nav__link">
+                  Inicio
+                </Link>
+              </li>
+              <li className="nav__item">
+                <Link to="/dashboard" className="nav__link">
+                  Dashboard
+                </Link>
+              </li>
+              <li className="nav__item">
+                <button onClick={handleLogout} className="nav__button">
+                  Cerrar sesión
+                </button>
+              </li>
             </>
-          }
-          {
-            !user && <>
-              <li><Link to="/login">Login</Link></li>
-              <li><Link to="/registrate">Registrate</Link></li>
+          )}
+          {!user && (
+            <>
+              <li className="nav__item">
+                <Link to="/login" className="nav__link">
+                  Login
+                </Link>
+              </li>
+              <li className="nav__item">
+                <Link to="/registrate" className="nav__link">
+                  Registrate
+                </Link>
+              </li>
             </>
-          }
+          )}
         </ul>
       </nav>
     </header>
-  )
-}
-
-export { Header }
+  );
+};
+export { Header };

@@ -12,6 +12,7 @@ const Home = () => {
   const [descriptionEdit, setDescriptionEdit] = useState("");
   const [categoryEdit, setCategoryEdit] = useState("");
   const [imageEdit, setImageEdit] = useState("");
+  const [searchTerm, setSearchTerm] = useState(""); // Estado para el término de búsqueda
 
   // simulando existencia del usuario, proximamente este estado será global
   const { user } = useAuth();
@@ -24,7 +25,7 @@ const Home = () => {
 
   // El array vacío (dependencias) espera a que ejecute el return del jsx. Si tiene algo, useEffect se va a ejecutar cada vez que se modifique lo que este dentro de la dependencia.
   useEffect(() => {
-    fetchingProducts()
+    fetchingProducts();
   }, []);
 
   const handleDelete = async (id) => {
@@ -79,71 +80,85 @@ const Home = () => {
     }
   };
 
+  const filteredProducts = products.filter((product) => product.title.toLowerCase().includes(searchTerm.toLowerCase()));
+
   return (
     <Layout>
-      <section className="home-hero">
-        <h1>Bienvenido a Nuestra Tienda</h1>
-        <p>Descubrí una selección exclusiva de productos para vos. Calidad, confianza y atención personalizada.</p>
-      </section>
+      <div className="container">
+        <section className="home-hero">
+          <h1>Bienvenido a Nuestra Tienda</h1>
+          <p>Descubrí una selección exclusiva de productos para vos. Calidad, confianza y atención personalizada.</p>
+        </section>
 
-      <section className="benefits-section">
-        <h2>¿Por qué elegirnos?</h2>
-        <div className="benefits-grid">
-          <div className="benefit-card">
-            <i className="bi bi-truck"></i>
-            <h5>Envíos a todo el país</h5>
-            <p>Recibí tu compra en la puerta de tu casa estés donde estés.</p>
-          </div>
-          <div className="benefit-card">
-            <i className="bi bi-shield-lock"></i>
-            <h5>Pagos seguros</h5>
-            <p>Trabajamos con plataformas que garantizan tu seguridad.</p>
-          </div>
-          <div className="benefit-card">
-            <i className="bi bi-person-check"></i>
-            <h5>Atención personalizada</h5>
-            <p>Estamos disponibles para ayudarte en todo momento.</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="products-intro">
-        <h2>Nuestros productos</h2>
-        <p>Elegí entre nuestras categorías más populares.</p>
-
-        {showPopup && (
-          <section className="popup-edit">
-            <h2>Editando producto.</h2>
-            <button onClick={() => setShowPopup(null)}>Cerrar</button>
-            <form onSubmit={handleUpdate}>
-              <input type="text" placeholder="Ingrese el titulo" value={titleEdit} onChange={(e) => setTitleEdit(e.target.value)} />
-              <input type="number" placeholder="Ingrese el precio" value={priceEdit} onChange={(e) => setPriceEdit(e.target.value)} />
-              <textarea placeholder="Ingrese la descripción" value={descriptionEdit} onChange={(e) => setDescriptionEdit(e.target.value)}></textarea>
-              <input type="text" placeholder="Ingrese la categoria" value={categoryEdit} onChange={(e) => setCategoryEdit(e.target.value)} />
-              <input type="text" placeholder="Ingrese la URL de la imagen" value={imageEdit} onChange={(e) => setImageEdit(e.target.value)} />
-              <button>Actualizar</button>
-            </form>
-          </section>
-        )}
-
-        <div className="product-grid">
-          {products.map((product) => (
-            <div className="product-card" key={product.id}>
-              <img src={product.image} alt={`Imagen de ${product.title}`} className="product-image" />
-              <h3 className="product-title">{product.title}</h3>
-              <p className="product-price">${product.price}</p>
-              <p className="product-description">{product.description}</p>
-              <p className="product-category">{product.category}</p>
-              {user && (
-                <div className="product-actions">
-                  <button onClick={() => handleOpenEdit(product)}>Actualizar</button>
-                  <button onClick={() => handleDelete(product.id)}>Borrar</button>
-                </div>
-              )}
+        <section className="benefits-section">
+          <h2>¿Por qué elegirnos?</h2>
+          <div className="benefits-grid">
+            <div className="benefit-card">
+              <i className="bi bi-truck"></i>
+              <h5>Envíos a todo el país</h5>
+              <p>Recibí tu compra en la puerta de tu casa estés donde estés.</p>
             </div>
-          ))}
-        </div>
-      </section>
+            <div className="benefit-card">
+              <i className="bi bi-shield-lock"></i>
+              <h5>Pagos seguros</h5>
+              <p>Trabajamos con plataformas que garantizan tu seguridad.</p>
+            </div>
+            <div className="benefit-card">
+              <i className="bi bi-person-check"></i>
+              <h5>Atención personalizada</h5>
+              <p>Estamos disponibles para ayudarte en todo momento.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="products-intro">
+          <h2>Nuestros productos</h2>
+          <p>Elegí entre nuestras categorías más populares.</p>
+
+          <div className="search-container">
+            <i className="bi bi-search"></i>
+            <input type="text" placeholder="Buscar producto..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+          </div>
+
+          {showPopup && (
+            <section className="popup-edit">
+              <h2>Editando producto.</h2>
+              <button onClick={() => setShowPopup(null)}>Cerrar</button>
+              <form onSubmit={handleUpdate}>
+                <input type="text" placeholder="Ingrese el titulo" value={titleEdit} onChange={(e) => setTitleEdit(e.target.value)} />
+                <input type="number" placeholder="Ingrese el precio" value={priceEdit} onChange={(e) => setPriceEdit(e.target.value)} />
+                <textarea placeholder="Ingrese la descripción" value={descriptionEdit} onChange={(e) => setDescriptionEdit(e.target.value)}></textarea>
+                <input type="text" placeholder="Ingrese la categoria" value={categoryEdit} onChange={(e) => setCategoryEdit(e.target.value)} />
+                <input type="text" placeholder="Ingrese la URL de la imagen" value={imageEdit} onChange={(e) => setImageEdit(e.target.value)} />
+                <button>Actualizar</button>
+              </form>
+            </section>
+          )}
+
+          <div className="product-grid">
+            {filteredProducts.map((product) => (
+              <div className="product-card" key={product.id}>
+                <div className="product-image-container">
+                  <img src={product.image} alt={`Imagen de ${product.title}`} className="product-image" />
+                </div>
+                <div className="product-info">
+                  <h3 className="product-title">{product.title}</h3>
+                  <p className="product-price">${product.price}</p>
+                  <p className="product-description">{product.description}</p>
+                  <p className="product-category">{product.category}</p>
+                </div>
+
+                {user && (
+                  <div className="product-actions">
+                    <button onClick={() => handleOpenEdit(product)}>Actualizar</button>
+                    <button onClick={() => handleDelete(product.id)}>Borrar</button>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
     </Layout>
   );
 };

@@ -1,0 +1,36 @@
+.login-container {
+  max-width: 400px;
+  margin: auto;
+  text-align: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.login-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-error {
+  color: red;
+  font-size: 0.9rem;
+}
+
+.login-test-creds {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px dashed #aaa;
+  background: #f9f9f9;
+  font-size: 0.9rem;
+}
+
+.login-test-creds code {
+  background: #eee;
+  padding: 2px 5px;
+  border-radius: 3px;
+}

@@ -1,55 +1,69 @@
-
-import { useState } from "react"
-import { Layout } from "../components/Layout"
-import { useAuth } from "../context/UserContext"
-import { useNavigate } from "react-router-dom"
+import { useState } from "react";
+import { Layout } from "../components/Layout";
+import { useAuth } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
+import "../styles/pages/Login.css";
 
 const Login = () => {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-  const { login } = useAuth()
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
-  const nagivate = useNavigate()
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const handleLogin = async (e) => {
-    e.preventDefault()
-    console.log({ username, password })
-    const isLogin = await login(username, password)
+  // Credenciales de ejemplo para mostrar al usuario
+  const testCreds = {
+    username: "mor_2314",
+    password: "83r5^_"
+  };
 
-    if (isLogin) {
-      setUsername("")
-      setPassword("")
-      nagivate("/")
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    if (!username || !password) {
+      setError("Debes completar todos los campos");
+      return;
     }
-  }
+
+    const ok = await login(username, password);
+    if (ok) {
+      navigate("/dashboard");
+    } else {
+      setError("Credenciales incorrectas");
+    }
+  };
 
   return (
     <Layout>
-      <h1>Inicia sesión</h1>
-
-      <section>
-        <h2>Hola, bienvenido de nuevo</h2>
-        <p>johnd, m38rmF$</p>
-        <form onSubmit={handleLogin}>
-          <div>
-            <label>Nombre de usuario:</label>
-            <input
-              type="text"
-              onChange={(e) => setUsername(e.target.value)}
-              value={username} />
-          </div>
-          <div>
-            <label>Contraseña:</label>
-            <input
-              type="password"
-              onChange={(e) => setPassword(e.target.value)}
-              value={password} />
-          </div>
-          <button>Ingresar</button>
+      <div className="login-container">
+        <h1>Iniciar sesión</h1>
+        <form className="login-form" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Nombre de usuario"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Contraseña"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {error && <p className="login-error">{error}</p>}
+          <button type="submit">Ingresar</button>
         </form>
-      </section>
-    </Layout>
-  )
-}
 
-export { Login }
+        <div className="login-test-creds">
+          <p><strong>Credenciales de prueba:</strong></p>
+          <p>Usuario: <code>{testCreds.username}</code></p>
+          <p>Contraseña: <code>{testCreds.password}</code></p>
+        </div>
+      </div>
+    </Layout>
+  );
+};
+
+export { Login };

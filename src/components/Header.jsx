@@ -18,17 +18,16 @@ const Header = () => {
       </div>
       <nav className="header__nav">
         <ul className="nav__list">
-          {user && (
+          {user ? (
             <>
               <li className="nav__item">
-                <Link to="/" className="nav__link">
-                  Inicio
-                </Link>
+                <Link to="/" className="nav__link">Inicio</Link>
               </li>
               <li className="nav__item">
-                <Link to="/dashboard" className="nav__link">
-                  Dashboard
-                </Link>
+                <Link to="/sobre-nosotros" className="nav__link">Sobre Nosotros</Link>
+              </li>
+              <li className="nav__item">
+                <Link to="/dashboard" className="nav__link">Dashboard</Link>
               </li>
               <li className="nav__item">
                 <button onClick={handleLogout} className="nav__button">
@@ -36,18 +35,19 @@ const Header = () => {
                 </button>
               </li>
             </>
-          )}
-          {!user && (
+          ) : (
             <>
               <li className="nav__item">
-                <Link to="/login" className="nav__link">
-                  Login
-                </Link>
+                <Link to="/" className="nav__link">Inicio</Link>
               </li>
               <li className="nav__item">
-                <Link to="/registrate" className="nav__link">
-                  Registrate
-                </Link>
+                <Link to="/sobre-nosotros" className="nav__link">Sobre Nosotros</Link>
+              </li>
+              <li className="nav__item">
+                <Link to="/login" className="nav__link">Iniciar sesión</Link>
+              </li>
+              <li className="nav__item">
+                <Link to="/registrate" className="nav__link">Registrarse</Link>
               </li>
             </>
           )}
@@ -56,4 +56,5 @@ const Header = () => {
     </header>
   );
 };
+
 export { Header };

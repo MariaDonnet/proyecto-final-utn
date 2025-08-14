@@ -1,80 +1,90 @@
-import { useState } from "react"
-import { Layout } from "../components/Layout"
+import { useState } from "react";
+import { Layout } from "../components/Layout";
+import { useAuth } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
+import "../styles/pages/Register.css";
 
 const Register = () => {
-  const [username, setUsername] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState("")
-  const [success, setSuccess] = useState("")
+  const { register } = useAuth();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    setError("")
-    setSuccess("")
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
-    if (!username || !email || !password) {
-      setError("Debes completar todos los campos")
-      return
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setSuccess("");
+
+    if (!username || !email || !password || !confirmPassword) {
+      setError("Debes completar todos los campos");
+      return;
     }
 
-    const newUser = {
-      username,
-      email,
-      password
+    if (username.length < 3) {
+      setError("El nombre de usuario debe tener al menos 3 caracteres");
+      return;
     }
 
-    console.log(newUser)
-    setSuccess("Usuario registrado con éxito")
+    if (password !== confirmPassword) {
+      setError("Las contraseñas no coinciden");
+      return;
+    }
 
-    setUsername("")
-    setEmail("")
-    setPassword("")
-  }
+    const newUser = { username, email, password };
+    const ok = await register(newUser);
+    if (ok) {
+      setSuccess("Usuario registrado con éxito");
+      setTimeout(() => navigate("/"), 1000);
+    }
+  };
 
   return (
     <Layout>
-      <h1>Registrate</h1>
-
-      <section>
-        <h2>Hola, bienvenido</h2>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Username:</label>
+      <div className="register-page">
+        <div className="register-card">
+          <h2>Registrate</h2>
+          <p>Crea tu cuenta para acceder a todas las funcionalidades</p>
+          <form onSubmit={handleSubmit}>
             <input
               type="text"
-              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Ingresa tu nombre de usuario"
               value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
-          </div>
-          <div>
-            <label>Correo electrónico:</label>
             <input
               type="email"
-              onChange={(e) => setEmail(e.target.value)}
+              placeholder="tu@email.com"
               value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
-          </div>
-          <div>
-            <label>Contraseña:</label>
             <input
               type="password"
-              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Mínimo 6 caracteres"
               value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
-          </div>
-          <button>Ingresar</button>
-        </form>
-
-        {
-          error && <p style={{ color: "red" }}>{error}</p>
-        }
-        {
-          success && <p style={{ color: "green" }}>{success}</p>
-        }
-      </section>
+            <input
+              type="password"
+              placeholder="Repite tu contraseña"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+            {error && <p className="error-message">{error}</p>}
+            {success && <p className="success-message">{success}</p>}
+            <button type="submit" className="btn-submit">Crear cuenta</button>
+          </form>
+          <p className="login-link">
+            ¿Ya tenés una cuenta? <span onClick={() => navigate("/login")}>Iniciar sesión</span>
+          </p>
+        </div>
+      </div>
     </Layout>
-  )
-}
+  );
+};
 
-export { Register }
+export { Register };

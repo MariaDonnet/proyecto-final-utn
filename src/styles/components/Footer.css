@@ -2,18 +2,28 @@
   background-color: #222;
   color: #eee;
   text-align: center;
-  padding: 15px 10px;
+  padding: 20px 10px;
   font-size: 0.9rem;
   font-weight: 400;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2); 
 }
-
+.footer__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 .footer__link {
   color: #61dafb; 
   text-decoration: none;
   transition: color 0.3s ease;
 }
-
 .footer__link:hover {
   color: #21a1f1; 
   text-decoration: underline;
+}
+/* Responsive */
+@media (max-width: 480px) {
+  .footer {
+    font-size: 0.8rem;
+    padding: 15px 10px;
+  }
 }

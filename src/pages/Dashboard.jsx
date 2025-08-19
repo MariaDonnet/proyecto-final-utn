@@ -50,40 +50,56 @@ const Dashboard = () => {
 
   return (
     <Layout>
-      <h1>Panel de Administración</h1>
+      <h1 className="dashboard-title">Panel de Administración</h1>
 
-      <section>
-        <h2>Cargar nuevo producto</h2>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Nombre del producto:</label>
-            <input type="text" name="nombre" onChange={(e) => setName(e.target.value)} value={name} />
+      <section className="dashboard-section">
+        <h2 className="section-title">Cargar nuevo producto</h2>
+        <form className="product-form" onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label className="form-label">Nombre del producto:</label>
+            <input
+              type="text"
+              name="nombre"
+              className="form-input"
+              onChange={(e) => setName(e.target.value)}
+              value={name}
+            />
           </div>
 
-          <div>
-            <label>Precio:</label>
-            <input type="number" name="precio" onChange={(e) => setPrice(e.target.value)} value={price} />
+          <div className="form-group">
+            <label className="form-label">Precio:</label>
+            <input
+              type="number"
+              name="precio"
+              className="form-input"
+              onChange={(e) => setPrice(e.target.value)}
+              value={price}
+            />
           </div>
 
-          <div>
-            <label>Descripción:</label>
-            <textarea name="descripcion" rows="4" onChange={(e) => setDescription(e.target.value)} value={description} />
+          <div className="form-group">
+            <label className="form-label">Descripción:</label>
+            <textarea
+              name="descripcion"
+              rows="4"
+              className="form-textarea"
+              onChange={(e) => setDescription(e.target.value)}
+              value={description}
+            />
           </div>
 
-          {
-            error && <p className="error">{error}</p>
-          }
+          {error && <p className="error-message">{error}</p>}
 
-          <button>Guardar producto</button>
+          <button className="submit-button">Guardar producto</button>
         </form>
 
-        {
-          product && <div>
-            <h3>{product.title}</h3>
-            <p>${product.price}</p>
-            <p>{product.description}</p>
+        {product && (
+          <div className="product-display">
+            <h3 className="product-title">{product.title}</h3>
+            <p className="product-price">${product.price}</p>
+            <p className="product-description">{product.description}</p>
           </div>
-        }
+        )}
       </section>
     </Layout>
   )

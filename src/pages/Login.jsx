@@ -10,56 +10,73 @@ const Login = () => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [loginError, setLoginError] = useState("");
 
-  // Credenciales de ejemplo para mostrar al usuario
-  const testCreds = {
-    username: "mor_2314",
-    password: "83r5^_"
-  };
-
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    setError("");
+    setLoginError("");
 
+    // Validación de campos vacíos
     if (!username || !password) {
-      setError("Debes completar todos los campos");
+      setLoginError("Debes completar todos los campos");
       return;
     }
 
+    // Llamada a login() desde el contexto
     const ok = await login(username, password);
+
     if (ok) {
-      navigate("/dashboard");
+      navigate("/dashboard"); // 👈 redirige al panel de administración
     } else {
-      setError("Credenciales incorrectas");
+      setLoginError("Credenciales incorrectas");
     }
   };
 
   return (
     <Layout>
-      <div className="login-container">
-        <h1>Iniciar sesión</h1>
-        <form className="login-form" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Nombre de usuario"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Contraseña"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {error && <p className="login-error">{error}</p>}
-          <button type="submit">Ingresar</button>
-        </form>
+      <div className="login-page">
+        <div className="login-card">
+          <h1 className="login-title">Inicia sesión</h1>
+          <p className="login-subtitle">Bienvenido de nuevo a nuestra tienda</p>
 
-        <div className="login-test-creds">
-          <p><strong>Credenciales de prueba:</strong></p>
-          <p>Usuario: <code>{testCreds.username}</code></p>
-          <p>Contraseña: <code>{testCreds.password}</code></p>
+          {/* Bloque con credenciales de prueba */}
+          <div className="login-alert">
+            <p><strong>Credenciales de prueba:</strong></p>
+            <p><b>Usuario:</b> johnd</p>
+            <p><b>Contraseña:</b> m38rmF$</p>
+          </div>
+
+          {/* Formulario de login */}
+          <form onSubmit={handleLogin} className="login-form">
+            <div className="form-group">
+              <label>Nombre de usuario:</label>
+              <input
+                type="text"
+                placeholder="Ingresa tu nombre de usuario"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Contraseña:</label>
+              <input
+                type="password"
+                placeholder="Ingresa tu contraseña"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+
+            {/* Error si falla el login */}
+            {loginError && <p className="login-error">{loginError}</p>}
+
+            <button type="submit" className="login-btn">Ingresar</button>
+          </form>
+
+          <p className="login-register">
+            ¿No tenés una cuenta? <a href="#">Regístrate</a>
+          </p>
         </div>
       </div>
     </Layout>

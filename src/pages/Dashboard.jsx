@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Layout } from "../components/Layout"
+import "../styles/pages/Dashboard.css"  
 
 const Dashboard = () => {
   const [name, setName] = useState("")
@@ -7,8 +8,6 @@ const Dashboard = () => {
   const [description, setDescription] = useState("")
   const [product, setProduct] = useState(null)
   const [error, setError] = useState(null)
-
-
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -20,7 +19,7 @@ const Dashboard = () => {
     }
 
     if (name.length < 3) {
-      setError("El nombre debe tener al menos 4 caracteres")
+      setError("El nombre debe tener al menos 3 caracteres")
       return
     }
 

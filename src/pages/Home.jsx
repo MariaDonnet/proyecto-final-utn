@@ -112,9 +112,8 @@ const Home = () => {
         </section>
 
         <section className="products-intro">
-          <h2>Nuestros productos</h2>
-          <p>Elegí entre nuestras categorías más populares.</p>
-
+          <h2 className="products-title">Nuestros productos</h2>
+          <p className="products-text">Elegí entre nuestras categorías más populares.</p>
           <div className="search-container">
             <i className="bi bi-search"></i>
             <input type="text" placeholder="Buscar producto..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
@@ -150,8 +149,8 @@ const Home = () => {
 
                 {user && (
                   <div className="product-actions">
-                    <button onClick={() => handleOpenEdit(product)}>Actualizar</button>
-                    <button onClick={() => handleDelete(product.id)}>Borrar</button>
+                    <button onClick={() => handleOpenEdit(product)} className="product-update">Editar</button>
+                    <button onClick={() => handleDelete(product.id)} className="product-delete">Eliminar</button>
                   </div>
                 )}
               </div>

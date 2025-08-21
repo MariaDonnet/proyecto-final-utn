@@ -141,10 +141,10 @@ const Home = () => {
                   <img src={product.image} alt={`Imagen de ${product.title}`} className="product-image" />
                 </div>
                 <div className="product-info">
-                  <h3 className="product-title">{product.title}</h3>
-                  <p className="product-price">${product.price}</p>
-                  <p className="product-description">{product.description}</p>
-                  <p className="product-category">{product.category}</p>
+                  <h3 className="product_title">{product.title}</h3>
+                  <p className="product_price">${product.price}</p>
+                  <p className="product_description">{product.description}</p>
+                  <p className="product_category">{product.category}</p>
                 </div>
 
                 {user && (

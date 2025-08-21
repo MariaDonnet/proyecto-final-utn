@@ -74,7 +74,7 @@ const Register = () => {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
-            {error && <p className="error-message">{error}</p>}
+            {error && <p className="register-error">{error}</p>}
             {success && <p className="success-message">{success}</p>}
             <button type="submit" className="btn-submit">Crear cuenta</button>
           </form>

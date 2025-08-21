@@ -41,7 +41,7 @@
 }
 .benefit-card i {
   font-size: 2rem;
-  color: #3498db;
+  color: #7C3AED;
 }
 .benefit-card h5 {
   margin: 1rem 0 0.5rem;
@@ -137,18 +137,18 @@
   margin-top: 1rem;
   padding: 0 0.5rem;
 }
-.product-title {
+.product_title {
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
-.product-price {
-  font-size: 1.2rem;
-  color: #22df51;
+.product_price {
+  font-size: 1.3rem;
+  color: #5B21B6;
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
-.product-description {
+.product_description {
 font-size: 0.9rem;
   color: #555;
   display: -webkit-box;
@@ -158,9 +158,10 @@ font-size: 0.9rem;
   text-overflow: ellipsis;
   margin-bottom: 0.5rem;
 }
-.product-category {
-  font-size: 0.85rem;
-  color: #888;
+.product_category {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #a473a8;
   font-style: italic;
 }
 .product-actions {

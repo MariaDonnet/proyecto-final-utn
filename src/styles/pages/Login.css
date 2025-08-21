@@ -3,117 +3,108 @@
   justify-content: center;
   align-items: center;
   min-height: 80vh;
-  padding: 1rem;
+  padding: 2rem;
 }
-
 .login-card {
   background: #fff;
-  padding: 2rem;
+  padding: 30px 40px;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  max-width: 400px;
   width: 100%;
   max-width: 350px;
   text-align: center;
 }
-
 .login-title {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: bold;
-  margin-bottom: 0.5rem;
+  margin-bottom: .9rem;
   color: #111827;
 }
-
 .login-subtitle {
   font-size: 0.9rem;
   color: #6b7280;
   margin-bottom: 1.5rem;
 }
-
 .login-alert {
-  background: #f9fafb;
-  border: 1px solid #e5e7eb;
+  background: #F5F3FF;
+  border: 1px solid #dcdae9;
   border-radius: 6px;
   padding: 0.8rem;
   text-align: left;
   margin-bottom: 1.5rem;
   font-size: 0.9rem;
 }
-
+.login-alert p{
+  margin: 0.2rem;
+}
 .form-group {
   text-align: left;
   margin-bottom: 1rem;
 }
-
 .form-group label {
   display: block;
   font-size: 0.9rem;
   margin-bottom: 0.3rem;
   color: #374151;
 }
-
 .form-group input {
   width: 100%;
   padding: 0.6rem;
-  border: 1px solid #d1d5db;
+  border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 0.9rem;
 }
-
+.form-group input:focus{
+  border-color: #000000;
+  outline: none;
+}
 .login-error {
   color: red;
   font-size: 0.85rem;
   margin-bottom: 1rem;
   text-align: left;
 }
-
 .login-btn {
   width: 100%;
-  background: #2563eb;
-  color: #fff;
+  background: #9333EA;
+  color: #000000;
   font-weight: 500;
+  font-size: 16px;
   padding: 0.75rem;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.3s ease;
 }
-
 .login-btn:hover {
-  background: #1d4ed8;
+  background: #A855F7;
 }
-
 .login-register {
   margin-top: 1.5rem;
   font-size: 0.9rem;
   color: #6b7280;
 }
-
-.login-register a {
-  color: #2563eb;
+.login-register span {
+  color: #9333EA;
   font-weight: 500;
   text-decoration: none;
+  cursor: pointer;
 }
-
-.login-register a:hover {
+.login-register span:hover {
   text-decoration: underline;
 }
-
-/* ✅ Responsive */
+/* Responsive */
 @media (max-width: 480px) {
   .login-card {
     padding: 1.5rem;
     border-radius: 8px;
   }
-
   .login-title {
     font-size: 1.5rem;
   }
-
   .login-subtitle {
     font-size: 0.85rem;
   }
-
   .login-alert {
     font-size: 0.8rem;
     padding: 0.6rem;
@@ -123,12 +114,10 @@
     padding: 0.55rem;
     font-size: 0.85rem;
   }
-
   .login-btn {
     padding: 0.65rem;
     font-size: 0.9rem;
   }
-
   .login-register {
     font-size: 0.8rem;
   }

@@ -75,7 +75,7 @@ const Login = () => {
           </form>
 
           <p className="login-register">
-            ¿No tenés una cuenta? <a href="#">Regístrate</a>
+            ¿No tenés una cuenta? <span onClick={() => navigate("/registrate")}>Regístrate</span>
           </p>
         </div>
       </div>

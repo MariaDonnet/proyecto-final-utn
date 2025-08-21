@@ -14,8 +14,8 @@ const SobreNosotros = () => {
           <p>Nuestro compromiso es contigo, nuestro cliente, y con la innovación constante para mejorar cada día.</p>
         </div>
         {/* Sección de valores / beneficios */}
-        <div className="about-values">
-          <div className="about-value">
+        <div className="about_values">
+          <div className="about_value">
               <span class="icon">🎯</span>
             <h3>Nuestro Proyecto</h3>
             <p>
@@ -24,7 +24,7 @@ const SobreNosotros = () => {
               diseño adaptable.
             </p>
           </div>
-          <div className="about-value">
+          <div className="about_value">
               <span class="icon">👥</span>
             <h3>Nuestro Público</h3>
             <p>
@@ -32,7 +32,7 @@ const SobreNosotros = () => {
               comunes en aplicaciones web. Los usuarios podrán explorar productos, registrarse, iniciar sesión y gestionar el catálogo, ofreciendo una experiencia de compra completa.
             </p>
           </div>
-          <div className="about-value">
+          <div className="about_value">
               <span class="icon">⚡</span>
             <h3>Tecnologías y Enfoques</h3>
             <p>
@@ -93,7 +93,7 @@ const SobreNosotros = () => {
         <div className="about-questions">
           <h2>¿Tenés alguna pregunta?</h2>
           <p>Este proyecto fue desarrollado como parte del aprendizaje de React y las tecnologías modernas de desarrollo web. Si tenés alguna consulta o sugerencia, no dudes en contactarnos.</p>
-          <a href="https://github.com/MariaDonnet" target="_blank" rel="noopener noreferrer" className="btn-projects">
+          <a href="https://github.com/MariaDonnet" target="_blank" rel="noopener noreferrer" className="btn_projects">
             Ver más Proyectos
           </a>
         </div>

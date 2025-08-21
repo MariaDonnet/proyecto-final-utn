@@ -1,8 +1,6 @@
 .about-container {
   max-width: 85%;
   margin: 0 auto;
-  font-family: 'Roboto', sans-serif;
-  color: #333;
   line-height: 1.6;
   box-sizing: border-box;
   text-align: center;
@@ -11,7 +9,7 @@
   font-size: 2.2rem;
   font-weight: 700;
   margin:30px 0;
-  color: #007bff;
+  color: #1E1B4B;
 }
 .about-intro {
   margin-bottom: 50px;
@@ -22,7 +20,7 @@
   margin-bottom: 25px;
 }
 /* Valores / beneficios */
-.about-values {
+.about_values {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
@@ -30,8 +28,8 @@
   margin-bottom: 40px;
   padding: 0 20px;
 }
-.about-value {
-  border: 2px solid #000000; 
+.about_value {
+  border: 1.5px solid #000000; 
   border-radius: 12px;        
   padding: 20px;              
   display: flex;
@@ -42,16 +40,16 @@
   background-color: #f8f9fa;    
 }
 
-.about-value .icon {
+.about_value .icon {
   font-size: 2rem;
   margin-bottom: 10px; 
 }
-.about-value h3 {
+.about_value h3 {
   font-size: 1.3rem;
   margin-bottom: 12px;
-  color: #0056b3;
+  color: #4C1D95;
 }
-.about-value p {
+.about_value p {
   font-size: 0.95rem;
   text-align: center; 
 }
@@ -63,7 +61,7 @@
 .about-features h2 {
   font-size: 1.8rem;
   margin-bottom: 30px;
-  color: #007bff;
+  color: #5B21B6;
 }
 /* Grid de cards */
 .features-grid {
@@ -88,7 +86,7 @@
 .feature-card h3 {
   font-size: 1.15rem;
   margin-bottom: 15px;
-  color: #0056b3;
+  color: #4C1D95;
 }
 .feature-card ul {
   padding-left: 0;
@@ -106,15 +104,16 @@
 .about-questions h2 {
   font-size: 1.8rem;
   margin-bottom: 25px;
-  color: #007bff;
+  color: #5B21B6;
 }
 .about-questions p {
   font-size: 1rem;
   margin-bottom: 25px;
 }
-.btn-projects {
+.btn_projects {
   padding: 12px 25px;
   font-size: 1rem;
+  color: #000000;
 }
 /* Responsive */
 @media (max-width: 1024px) {

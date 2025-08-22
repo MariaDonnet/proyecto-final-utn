@@ -211,7 +211,7 @@ font-size: 0.9rem;
 }
 .popup-edit h2 {
   margin-bottom: 1rem;
-  color: #1e40af;
+  color: #4C1D95;
 }
 .popup-edit form {
   display: flex;
@@ -227,14 +227,19 @@ font-size: 0.9rem;
   font-size: 0.95rem;
 }
 .popup-edit button {
-  background: #2563eb;
+  width: 100%;
+  background: #9333EA;
   color: #fff;
+  font-weight: 500;
+  font-size: 18px;
+  padding: 0.75rem;
   border: none;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background 0.2s ease-in-out;
+  transition: background 0.3s ease;
 }
 .popup-edit button:hover {
-  background: #1e40af;
+  background: #A855F7;
 }
 /* Animaciones */
 @keyframes fadeIn {

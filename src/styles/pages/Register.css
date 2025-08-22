@@ -40,7 +40,8 @@
 .btn-submit {
   width: 100%;
   background: #9333EA;
-  color: #000000;
+  color: #fff
+  ;
   font-weight: 500;
   font-size: 16px;
   padding: 0.75rem;

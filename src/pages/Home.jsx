@@ -122,7 +122,7 @@ const Home = () => {
           {showPopup && (
             <section className="popup-edit">
               <h2>Editando producto.</h2>
-              <button onClick={() => setShowPopup(null)}>Cerrar</button>
+
               <form onSubmit={handleUpdate}>
                 <input type="text" placeholder="Ingrese el titulo" value={titleEdit} onChange={(e) => setTitleEdit(e.target.value)} />
                 <input type="number" placeholder="Ingrese el precio" value={priceEdit} onChange={(e) => setPriceEdit(e.target.value)} />
@@ -130,6 +130,7 @@ const Home = () => {
                 <input type="text" placeholder="Ingrese la categoria" value={categoryEdit} onChange={(e) => setCategoryEdit(e.target.value)} />
                 <input type="text" placeholder="Ingrese la URL de la imagen" value={imageEdit} onChange={(e) => setImageEdit(e.target.value)} />
                 <button>Actualizar</button>
+                <button onClick={() => setShowPopup(null)}>Cerrar</button>
               </form>
             </section>
           )}

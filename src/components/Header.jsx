@@ -1,16 +1,26 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/UserContext";
+import { useEffect, useState } from "react";
 import "../styles/components/Header.css";
 
 const Header = () => {
   const { user, logout } = useAuth();
+  const [scrolled, setScrolled] = useState(false);
 
   const handleLogout = () => {
     logout();
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10); // agrega sombra si baja 10px
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="header">
+      <header className={`header ${scrolled ? "header--scrolled" : ""}`}>
       <div className="header__logo">
         <Link to="/" className="header__brand">
           Mi Tienda

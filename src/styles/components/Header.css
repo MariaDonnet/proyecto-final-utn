@@ -1,11 +1,25 @@
-.header {
+/*.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
   background-color: #C4B5FD;
+}*/
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #C4B5FD;
+  transition: box-shadow 0.3s ease;
 }
-
+.header--scrolled {
+  background-color: rgba(196, 181, 253, 0.8); 
+  backdrop-filter: blur(6px); 
+}
 .header__brand {
   font-weight: bold;
   text-decoration: none;

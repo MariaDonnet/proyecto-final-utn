@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Layout } from "../components/Layout";
 import { useAuth } from "../context/UserContext";
+import Swal from 'sweetalert2';
 import "../styles/pages/Home.css";
 
 const Home = () => {
@@ -30,10 +31,36 @@ const Home = () => {
 
   const handleDelete = async (id) => {
     const response = await fetch(`https://fakestoreapi.com/products/${id}`, { method: "DELETE" });
+        // Confirmación con SweetAlert2
+    const result = await Swal.fire({
+      title: "¿Estás seguro?",
+      text: "Este producto será eliminado",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#dc2626",
+      cancelButtonColor: "#6b7280",
+      confirmButtonText: "Sí, eliminar",
+      cancelButtonText: "Cancelar",
+    });
 
-    if (response.ok) {
-      setProducts((prevProduct) => prevProduct.filter((product) => product.id != id));
-      // fetchingProducts()
+    if (result.isConfirmed) {
+      const response = await fetch(`https://fakestoreapi.com/products/${id}`, {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+        setProducts((prevProduct) =>
+          prevProduct.filter((product) => product.id !== id)
+        );
+
+        // Mensaje de éxito
+        Swal.fire({
+          icon: "success",
+          title: "Producto eliminado",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
     }
   };
 

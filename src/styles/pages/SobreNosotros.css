@@ -123,6 +123,18 @@
     gap: 20px;
   }
 }
+@media (max-width: 880px) {
+  .about_values {
+    display: block;           /* De grid a bloque para apilar verticalmente */
+    gap: 0;                   /* Se elimina el gap del grid */
+  }
+
+  .about_value {
+    width: 100%;              /* Cada card ocupa todo el ancho */
+    margin-bottom: 20px;      /* Espaciado entre cards */
+    min-height: auto;         /* Ajuste altura automática */
+  }
+}
 @media (max-width: 768px) {
   .about-values,
   .features-grid {
@@ -137,7 +149,7 @@
     font-size: 0.95rem;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .about-title {
     font-size: 1.6rem;
   }

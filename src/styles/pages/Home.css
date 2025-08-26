@@ -270,4 +270,12 @@ font-size: 0.9rem;
   .home-hero p {
     font-size: 1rem;
   }
+  .popup-edit{
+    width: 90%;
+    max-width: 350px; /* para que no se estire demasiado */
+    padding: 1.5rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* sigue centrado */
+  }
 }

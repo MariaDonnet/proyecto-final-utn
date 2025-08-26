@@ -5,7 +5,7 @@
 - [Objetivo general](#objetivo-general)
 - [Funcionalidades](#funcionalidades)
 - [Tecnologías Utilizadas](#tecnologías-utilizadas)
-- [Instrucciones para clonar el repositorio](#-instrucciones-para-clonar-el-repositorio)
+- [Instrucciones para clonar el repositorio](#instrucciones-para-clonar-el-repositorio)
 - [Sobre el Proyecto](#sobre-el-proyecto)
 - [API Utilizada](#api-utilizada)
 - [URL Deployed](#url-deployed)
@@ -29,7 +29,7 @@ Aplicación web en React que combina un e-commerce funcional con un panel de adm
 - 🛠 **Panel de administración** intuitivo para gestionar productos de manera rápida y accesible.  
 - 👤 **Perfil de usuario** con datos personalizados.  
 
-## ⚙️ **Tecnologías Utilizadas**
+## **Tecnologías Utilizadas**
 
 - ⚛️ **React** (creado con Vite)  
 - 🖌️ **Bootstrap 5** para diseño responsive y componentes visuales  

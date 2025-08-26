@@ -12,12 +12,12 @@
   margin: 0 auto;
 }
 .footer__link {
-  color: #61dafb; 
+  color: #9333EA; 
   text-decoration: none;
   transition: color 0.3s ease;
 }
 .footer__link:hover {
-  color: #21a1f1; 
+  color: #A855F7; 
   text-decoration: underline;
 }
 /* Responsive */

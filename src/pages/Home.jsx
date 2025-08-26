@@ -28,7 +28,7 @@ const Home = () => {
   useEffect(() => {
     fetchingProducts();
   }, []);
-
+  
   const handleDelete = async (id) => {
     const response = await fetch(`https://fakestoreapi.com/products/${id}`, { method: "DELETE" });
         // Confirmación con SweetAlert2

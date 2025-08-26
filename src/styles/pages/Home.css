@@ -207,7 +207,6 @@ font-size: 0.9rem;
   z-index: 1000;
   width: 95%;
   max-width: 480px;
-  animation: fadeIn 0.3s ease;
 }
 .popup-edit h2 {
   margin-bottom: 1rem;
@@ -240,11 +239,6 @@ font-size: 0.9rem;
 }
 .popup-edit button:hover {
   background: #A855F7;
-}
-/* Animaciones */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translate(-50%, -48%); }
-  to { opacity: 1; transform: translate(-50%, -50%); }
 }
 /* Responsivo */
 @media (max-width: 1024px) {
